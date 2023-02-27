@@ -25,14 +25,16 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public List<Car> showCar(int id) {      //4. Создайте сервис с методом, который будет возвращать указанное число машин из созданного списка.
-        if (id > 5) {
+    public List<Car> showCar(int count) {           //4. Создайте сервис с методом, который будет возвращать указанное число машин из созданного списка.
+        List<Car> sortedCars = new ArrayList<>();
+        if (count > 5) {
             return cars;
         } else {
-            return cars.stream().
-                    filter(car -> car.getId() <= id).toList();
+            for (int i = 0; i < count; i++) {
+                sortedCars.add(cars.get(i));
+            }
+            return sortedCars;
         }
-
     }
 
     @Override
